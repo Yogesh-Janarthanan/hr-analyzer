@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Scoring Rules</h2>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h4>Add New Rule</h4>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="rule_name">Rule Name</label>
+                        <input type="text" class="form-control" name="rule_name" required>
+                        <small class="text-muted">e.g., "Python Skills", "Experience Level"</small>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="rule_type">Rule Type</label>
+                        <select class="form-control" name="rule_type" required>
+                            <option value="">Select Type</option>
+                            <option value="experience">Experience (Years)</option>
+                            <option value="skills">Technical Skills</option>
+                            <option value="education">Education Level</option>
+                            <option value="general">General Keywords</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="keywords">Keywords</label>
+                        <input type="text" class="form-control" name="keywords" required>
+                        <small class="text-muted">For skills: python,react,aws (comma-separated)</small>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="weightage">Points (1-20)</label>
+                        <input type="number" class="form-control" name="weightage" min="1" max="20" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success">Add Rule</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h4>Current Rules</h4>
+            </div>
+            <div class="card-body">
+                {% if rules %}
+                    {% for rule in rules %}
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <h6>{{ rule[1] }}</h6>
+                                <small>Type: {{ rule[4] }}</small><br>
+                                <small>Keywords: {{ rule[2] }}</small>
+                                <span class="badge bg-primary float-end">{{ rule[3] }} pts</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="text-muted">No rules defined yet. Add your first rule!</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

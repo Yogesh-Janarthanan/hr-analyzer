@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Upload Resume</h2>
+<div class="row">
+    <div class="col-md-6">
+        <form method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="name">Candidate Name</label>
+                <input type="text" class="form-control" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email">
+            </div>
+            <div class="mb-3">
+                <label for="phone">Phone</label>
+                <input type="text" class="form-control" name="phone">
+            </div>
+            <div class="mb-3">
+                <label for="resume">Resume File</label>
+                <input type="file" class="form-control" name="resume" accept=".pdf,.docx,.txt" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Upload Resume</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Create Job Posting</h2>
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-warning text-dark">
+                <h4>Job Details</h4>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="title">Job Title</label>
+                        <input type="text" class="form-control" name="title" required>
+                        <small class="text-muted">e.g., "Senior Python Developer"</small>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="description">Job Description</label>
+                        <textarea class="form-control" name="description" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="candidate_limit">Number of Candidates to Interview</label>
+                        <input type="number" class="form-control" name="candidate_limit" value="10" min="1" max="50" required>
+                        <small class="text-muted">Top N candidates will be selected</small>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="email_template">Email Template</label>
+                        <textarea class="form-control" name="email_template" rows="6" required>Dear {candidate_name},
+
+Congratulations! Your application has been shortlisted for our position.
+
+We would like to invite you for an interview. We will contact you shortly with the details.
+
+Best regards,
+HR Team</textarea>
+                        <small class="text-muted">Use {candidate_name} for personalization</small>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-warning btn-lg">Create Job Posting</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
