@@ -315,7 +315,7 @@ email_service = EmailService()
 # Flask Routes
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('base.html')
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_resume():
